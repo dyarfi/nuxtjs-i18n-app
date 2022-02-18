@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'ComponentLanguages',
+  name: 'Languages',
   computed: {
     showLocales() {
       // console.log(this.$route.params)

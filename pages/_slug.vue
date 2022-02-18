@@ -6,7 +6,7 @@
 // import { getPage } from '~/queries'
 
 export default {
-  name: 'ComponentSlug',
+  name: 'Slug',
   // data() {
   //   console.log(this.$i18n.locale)
   //   return { slug: this.$route.params.slug }

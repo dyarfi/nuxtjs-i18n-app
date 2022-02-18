@@ -41,4 +41,26 @@ const getDataPages = gql`
 //   }
 // `
 
-export { getDataPages }
+const getDataFaqs = gql`
+  query ($locale: I18NLocaleCode) {
+    faqs(locale: $locale) {
+      data {
+        attributes {
+          title
+          slug
+          description
+        }
+      }
+      meta {
+        pagination {
+          total
+          page
+          pageSize
+          pageCount
+        }
+      }
+    }
+  }
+`
+
+export { getDataPages, getDataFaqs }

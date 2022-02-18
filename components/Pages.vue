@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: 'ComponentPages',
+  name: 'Pages',
   props: {
     items: {
       type: Object,

@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'ComponentCards',
+  name: 'Cards',
   props: {
     items: {
       type: Array,
