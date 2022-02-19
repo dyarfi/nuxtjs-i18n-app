@@ -1,3 +1,8 @@
+import i18nLocales from './constants/i18nLocales'
+// import { PhHorse, PhHeart, PhCube } from 'phosphor-vue'
+
+// import { phosphor } from './constants/icons'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   //  'server' | 'static'
@@ -32,18 +37,77 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/stylelint-module'
   ],
 
-  /* Tailwindcss module */
-  tailwindcss: {
-    jit: true
-  },
-
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/i18n', '@nuxtjs/apollo'],
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxtjs/apollo',
+    // https://go.nuxtjs.dev/chakra
+    '@chakra-ui/nuxt',
+    // https://go.nuxtjs.dev/emotion
+    '@nuxtjs/emotion'
+  ],
+
+  /**
+   * Add extend the plugin options under the `chakra` key.
+   **/
+  chakra: {
+    // icons: {
+    //   // Here we state that we use `fa`
+    //   // icons library for Chakra's
+    //   // internal icon parser
+    //   iconPack: 'phosphor',
+    //   iconSet: {
+    //     // ...phosphor
+    //     PhHorse,
+    //     PhHeart,
+    //     PhCube
+    //   }
+    // },
+    extendTheme: {
+      colors: {
+        primary: '#86BBD8',
+        secondary: '#F26419',
+        info: '#33658A',
+        error: '#F6AE2D',
+        success: '#315771',
+        brand: {
+          primary: '#86BBD8',
+          secondary: '#F26419',
+          info: '#33658A',
+          error: '#F6AE2D',
+          success: '#315771'
+        }
+      },
+      // radii: {
+      //   none: '0',
+      // sm: '0.125rem',
+      // md: '0.25rem',
+      // lg: '0.5rem',
+      // full: '9999px'
+      //   sm: '0',
+      //   md: '0',
+      //   lg: '0',
+      //   full: '9999px'
+      // },
+      // fonts: {
+      //   heading: '"Avenir Next", sans-serif',
+      //   body: 'system-ui, sans-serif',
+      //   mono: 'Menlo, monospace'
+      // },
+      baseStyles: {
+        /**
+         * Use a function to compute desired styles
+         **/
+        CButton: ({ /* colorMode, */ theme }) => ({
+          // bg: colorMode === 'light' ? 'tomato' : 'hotpink',
+          borderRadius: theme.sizes[0]
+        })
+      }
+    }
+  },
 
   // Modules: https://github.com/nuxt-community/apollo-module
   apollo: {
@@ -60,7 +124,7 @@ export default {
     vueI18nLoader: true,
     // skipSettingLocaleOnNavigate: true,
     // lazy: true,
-    // langDir: 'lang/',
+    // langDir: '~/static/lang/',
     locales: [
       {
         code: 'en',
@@ -79,17 +143,7 @@ export default {
         id: '/:slug?'
       }
     },
-    vueI18n: {
-      fallbackLocale: 'en',
-      messages: {
-        en: {
-          welcome: 'Welcome'
-        },
-        id: {
-          welcome: 'Selamat Datang'
-        }
-      }
-    }
+    vueI18n: i18nLocales
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

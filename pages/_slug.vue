@@ -15,7 +15,7 @@ export default {
     // console.log(route.params.slug)
     await store.dispatch('i18n/setRouteParams', {
       en: { postId: 'my-post' },
-      fr: { postId: 'mon-article' }
+      id: { postId: 'mon-article' }
     })
     return {
       slug: route.params.slug

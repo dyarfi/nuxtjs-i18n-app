@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap mx-auto container">
+  <c-simple-grid :columns="2" :spacing="10">
     <div
       v-for="item of items"
       :key="item.title"
@@ -7,12 +7,17 @@
     >
       {{ item.title }}
     </div>
-  </div>
+  </c-simple-grid>
 </template>
 
 <script>
+import { CSimpleGrid } from '@chakra-ui/vue'
+
 export default {
   name: 'Cards',
+  components: {
+    CSimpleGrid
+  },
   props: {
     items: {
       type: Array,

@@ -16,12 +16,12 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"],
+      "~/static/*": ["./static/*"],
       "~/components/*": ["./components/*"],
-      "~/i18n": ["./i18n"]
+      "~/constants": ["./constants"]
     },
     "types": ["@nuxt/types", "@types/node", "@nuxtjs/i18n"]
   },
-  "files": ["types/gql.d.ts", "types/vue-shim.d.ts"],
   "include": [
     "types/gql.d.ts",
     "types/vue-shim.d.ts",

@@ -1,13 +1,12 @@
 <template>
-  <div
-    v-if="items.data && items.data.length"
-    class="mt-8 flex flex-wrap mx-auto container gap-2"
-  >
+  <CSimpleGrid v-if="items.data && items.data.length" columns="2" :spacing="10">
     <div v-if="$apollo.loading">Loading...</div>
-    <div
+    <CBox
       v-for="(page, n) in items.data"
       :key="n"
-      class="bg-white overflow-hidden shadow sm:rounded-lg p-6 w-1/3"
+      box-shadow="lg"
+      border-width="1px"
+      p="5"
     >
       <div v-for="attributes in page" :key="attributes.slug">
         <nuxt-link
@@ -23,7 +22,7 @@
                 })
           "
         >
-          <h1>{{ attributes.title }}</h1>
+          <CHeading as="h3" size="md">{{ attributes.title }}</CHeading>
           <img
             v-if="
               attributes.image &&
@@ -35,13 +34,20 @@
           />
         </nuxt-link>
       </div>
-    </div>
-  </div>
+    </CBox>
+  </CSimpleGrid>
 </template>
 
 <script>
+import { CBox, CSimpleGrid, CHeading } from '@chakra-ui/vue'
+
 export default {
   name: 'Pages',
+  components: {
+    CBox,
+    CSimpleGrid,
+    CHeading
+  },
   props: {
     items: {
       type: Object,
