@@ -11,10 +11,61 @@
       <!-- <CBox my="12">
         <Pages :items="pages" />
       </CBox> -->
+
+      <CSimpleGrid
+        v-if="faqCategories && faqCategories.data.length"
+        maxW="xxl"
+        mx="auto"
+        :columns="[1, 2, 3]"
+        :spacing="5"
+      >
+        <CBox
+          v-for="(category, n) in faqCategories.data"
+          :key="`${category.attributes.title}_${n}`"
+          boxShadow="md"
+          borderWidth="1px"
+          p="5"
+          mt="8"
+          mb="4"
+          mx="auto"
+          :width="[
+            //'15%', // 992px upwards
+            //'50%', // 480px upwards
+            //'50%', // 768px upwards
+            '100%' // base
+            // '33%'
+          ]"
+          maxW="sm"
+          border-width="1px"
+          rounded="lg"
+          overflow="hidden"
+          :_hover="{ boxShadow: 'lg' }"
+        >
+          <CText as="h2" fontSize="2rem" fontWeight="bold">{{
+            category.attributes.title
+          }}</CText>
+          <p>{{ category.attributes.description }}</p>
+        </CBox>
+      </CSimpleGrid>
+
+      <CBox>
+        <c-stack :spacing="3">
+          <c-select
+            v-model="sortMode"
+            size="md"
+            name="sort"
+            :placeholder="$t('sort')"
+          >
+            <option value="sort[title]">Title</option>
+            <option value="sort[createdAt]">Created At</option>
+          </c-select>
+        </c-stack>
+      </CBox>
+
       <CSimpleGrid
         v-if="faqs && faqs.data && faqs.data.length"
         maxW="xxl"
-        :columns="[1, 1 / 2, '100%']"
+        :columns="[1]"
         :spacing="10"
         mt="12"
       >
@@ -62,7 +113,7 @@
                 <!-- {{
                   new Date(page.attributes.createdAt)
                 }} -->
-                Updated At:
+                {{ $t('updatedAt') }}:
                 {{
                   $dateFns.format(
                     page.attributes.updatedAt,
@@ -193,7 +244,7 @@ import Vue from 'vue'
 // import Cards from '~/components/Cards.vue'
 
 /* Gql queries */
-import { getDataPages, getDataFaqs } from '~/queries'
+import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -223,8 +274,10 @@ export default Vue.extend({
   },
   inject: ['$chakraColorMode', '$toggleColorMode'],
   data() {
+    // console.log(this.$apollo);
     return {
       pages: {},
+      sortMode:'',
       showModal: false,
       mainStyles: {
         dark: {
@@ -260,6 +313,7 @@ export default Vue.extend({
       })
     }
   },
+  // Apollo queries server side
   apollo: {
     pages: {
       query: getDataPages,
@@ -270,6 +324,13 @@ export default Vue.extend({
     },
     faqs: {
       query: getDataFaqs,
+      variables() {
+        return { locale: this.$i18n.locale }
+      },
+      fetchPolicy: 'cache-and-network'
+    },
+    faqCategories: {
+      query: getDataFaqCategories,
       variables() {
         return { locale: this.$i18n.locale }
       },

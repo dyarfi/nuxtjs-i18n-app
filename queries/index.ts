@@ -41,6 +41,21 @@ const getDataPages = gql`
 //   }
 // `
 
+const getDataFaqCategories = gql`
+  query ($locale: I18NLocaleCode) {
+    faqCategories(locale: $locale) {
+      data {
+        attributes {
+          title
+          slug
+          description
+          createdAt
+        }
+      }
+    }
+  }
+`
+
 const getDataFaqs = gql`
   query ($locale: I18NLocaleCode) {
     faqs(locale: $locale, filters: { show: { eq: true } }) {
@@ -65,4 +80,4 @@ const getDataFaqs = gql`
   }
 `
 
-export { getDataPages, getDataFaqs }
+export { getDataPages, getDataFaqCategories, getDataFaqs }

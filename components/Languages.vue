@@ -15,14 +15,31 @@
         >{{ locale.name }}</CText
       >
     </nuxt-link>
+    <!-- {{ languageType }} -->
+    <c-box mb="3" w="150px">
+      <c-select
+        v-model="languageType"
+        placeholder="Language"
+        variant="filled"
+        size="sm"
+      >
+        <option value="grilled" selected>English</option>
+        <option value="pub-style">Indonesia</option>
+        <option value="jucy-lucy">Japan</option>
+      </c-select>
+    </c-box>
   </span>
 </template>
 
 <script>
-import { CText } from '@chakra-ui/vue'
+import { CText, CBox, CSelect } from '@chakra-ui/vue'
 export default {
   name: 'Languages',
-  components: { CText },
+  components: { CText, CBox, CSelect },
+  data() {
+    // console.log(this.languageType)
+    return { languageType: '' }
+  },
   computed: {
     showLocales() {
       // console.log(this.$route.params)

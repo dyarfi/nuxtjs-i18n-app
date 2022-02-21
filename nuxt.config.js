@@ -80,12 +80,14 @@ export default {
         info: '#33658A',
         error: '#F6AE2D',
         success: '#315771',
+        muted: '#f5f5f5',
         brand: {
           primary: '#86BBD8',
           secondary: '#F26419',
           info: '#33658A',
           error: '#F6AE2D',
-          success: '#315771'
+          success: '#315771',
+          muted: '#f5f5f5'
         }
       },
       // radii: {
@@ -111,7 +113,11 @@ export default {
         CButton: ({ /* colorMode, */ theme }) => ({
           // bg: colorMode === 'light' ? 'tomato' : 'hotpink',
           borderRadius: theme.sizes[0]
-        })
+        }) //,
+        // CSelectInput: ({ /* colorMode, */ theme }) => ({
+        //   // bg: colorMode === 'light' ? 'tomato' : 'hotpink',
+        //   borderRadius: theme.sizes[0]
+        // })
       }
     }
   },
