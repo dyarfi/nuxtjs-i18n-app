@@ -1,7 +1,5 @@
-import i18nLocales from './constants/i18nLocales'
+import { defaultLocale, locales, i18nLocales } from './constants/i18nLocales'
 // import { PhHorse, PhHeart, PhCube } from 'phosphor-vue'
-
-// import { phosphor } from './constants/icons'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -12,7 +10,7 @@ export default {
   head: {
     title: 'nuxtjs-i18n-app',
     htmlAttrs: {
-      lang: 'en'
+      lang: defaultLocale
     },
     meta: [
       { charset: 'utf-8' },
@@ -47,7 +45,16 @@ export default {
     // https://go.nuxtjs.dev/chakra
     '@chakra-ui/nuxt',
     // https://go.nuxtjs.dev/emotion
-    '@nuxtjs/emotion'
+    '@nuxtjs/emotion',
+    // https://github.com/nuxt-community/date-fns-module
+    [
+      '@nuxtjs/date-fns',
+      {
+        locales: locales
+          .map((locale) => locale.code)
+          .map((code) => (code === defaultLocale ? 'en-US' : code))
+      }
+    ]
   ],
 
   /**
@@ -120,27 +127,17 @@ export default {
 
   // i18n module: https://i18n.nuxtjs.org/setup
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale,
     vueI18nLoader: true,
     // skipSettingLocaleOnNavigate: true,
     // lazy: true,
     // langDir: '~/static/lang/',
-    locales: [
-      {
-        code: 'en',
-        iso: 'en-US',
-        name: 'English'
-      },
-      {
-        code: 'id',
-        iso: 'in-ID',
-        name: 'Indonesia'
-      }
-    ],
+    locales,
     pages: {
       _slug: {
         en: '/:slug?',
-        id: '/:slug?'
+        id: '/:slug?',
+        ja: '/:slug?'
       }
     },
     vueI18n: i18nLocales

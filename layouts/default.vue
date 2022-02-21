@@ -8,7 +8,7 @@
 <template>
   <CThemeProvider>
     <CColorModeProvider>
-      <CBox font-family="body" as="main">
+      <CBox fontFamily="body" as="main">
         <CReset />
         <Nuxt />
       </CBox>
@@ -31,6 +31,13 @@ export default {
     CColorModeProvider,
     CReset,
     CBox
+  },
+  head({ $i18n }) {
+    return {
+      htmlAttrs: {
+        lang: $i18n.locale
+      }
+    }
   }
 }
 </script>
@@ -39,7 +46,7 @@ export default {
 .page-enter-active,
 .page-leave-active {
   /* transition-delay: 0s; */
-  transition: opacity 0.15s ease-out;
+  transition: opacity 0.15s ease-out 0.2;
 }
 
 .page-enter,

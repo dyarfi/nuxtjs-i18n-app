@@ -1,8 +1,16 @@
 <!-- Please remove this file from your project -->
 <template>
   <div class="container">
-    <h1>{{ $t('welcome') }}</h1>
-    <CBox maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <CBox
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      :width="['100%']"
+      mx="auto"
+      mt="6"
+      p="8"
+      display="inline-block"
+    >
       <a
         class="flex justify-center pt-8 sm:pt-0"
         href="https://nuxtjs.org"
@@ -10,32 +18,14 @@
       >
         <Logo />
       </a>
-      <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
+      <CPseudoBox my="4">
         <h2 class="text-2xl leading-7 font-semibold">
-          Welcome to your Nuxt Application
+          {{ $t('welcome') }}
         </h2>
-        <p class="mt-3 text-gray-600">
-          We recommend you take a look at the
-          <a
-            href="https://nuxtjs.org"
-            target="_blank"
-            class="button--doc text-green-500 hover:underline"
-            >Nuxt documentation</a
-          >, whether you are new or have previous experience with the
-          framework.<br />
-        </p>
-        <p class="mt-4 pt-4 text-gray-800 border-t border-dashed">
-          To get started, remove
-          <code class="bg-gray-100 text-sm p-1 rounded border"
-            >components/Tutorial.vue</code
-          >
-          and start coding in
-          <code class="bg-gray-100 text-sm p-1 rounded border"
-            >pages/index.vue</code
-          >. Have fun!
-        </p>
-      </div>
-      <div class="flex justify-center pt-4 space-x-2">
+        <p v-html="$t('recommend')" />
+        <p v-html="$t('started')" />
+      </CPseudoBox>
+      <CPseudoBox display="flex">
         <a href="https://github.com/nuxt/nuxt.js" target="_blank"
           ><svg
             class="w-6 h-6 text-gray-600 hover:text-gray-800 button--github"
@@ -70,16 +60,16 @@
               fill="currentColor"
             /></svg
         ></a>
-      </div>
+      </CPseudoBox>
     </CBox>
   </div>
 </template>
 
 <script>
-import { CBox } from '@chakra-ui/vue'
+import { CBox, CPseudoBox } from '@chakra-ui/vue'
 import Logo from './Logo.vue'
 export default {
   name: 'NuxtTutorial',
-  components: { Logo, CBox }
+  components: { Logo, CBox, CPseudoBox }
 }
 </script>

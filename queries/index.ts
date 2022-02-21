@@ -43,12 +43,14 @@ const getDataPages = gql`
 
 const getDataFaqs = gql`
   query ($locale: I18NLocaleCode) {
-    faqs(locale: $locale) {
+    faqs(locale: $locale, filters: { show: { eq: true } }) {
       data {
         attributes {
           title
           slug
           description
+          createdAt
+          updatedAt
         }
       }
       meta {

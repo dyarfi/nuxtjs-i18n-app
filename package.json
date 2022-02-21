@@ -23,6 +23,7 @@
   "dependencies": {
     "@chakra-ui/nuxt": "^0.4.2",
     "@nuxtjs/apollo": "^4.0.1-rc.5",
+    "@nuxtjs/date-fns": "^1.5.0",
     "@nuxtjs/emotion": "^0.1.0",
     "@nuxtjs/i18n": "^7.2.0",
     "core-js": "^3.19.3",

@@ -1,48 +1,86 @@
 <template>
-  <CBox w="75%" mx="auto" py="25">
-    <header>
-      <Languages />
-    </header>
-    <div class="flex items-top justify-center">
-      <Tutorial />
-    </div>
-    <!-- <Cards /> -->
-    <CBox my="12">
-      <Pages :items="pages" />
-    </CBox>
-    <CSimpleGrid
-      v-if="faqs && faqs.data && faqs.data.length"
-      columns="2"
-      :spacing="10"
-      mt="12"
-    >
-      <div v-if="$apollo.loading">Loading...</div>
-      <CBox
-        v-for="(page, n) in faqs.data"
-        :key="n"
-        box-shadow="lg"
-        border-width="1px"
-        p="5"
+  <div>
+    <CBox :width="['90%', '75%']" mx="auto" py="25">
+      <header>
+        <Languages />
+      </header>
+      <div class="flex items-top justify-center">
+        <Tutorial />
+      </div>
+      <!-- <Cards /> -->
+      <!-- <CBox my="12">
+        <Pages :items="pages" />
+      </CBox> -->
+      <CSimpleGrid
+        v-if="faqs && faqs.data && faqs.data.length"
+        maxW="xxl"
+        :columns="[1, 1 / 2, '100%']"
+        :spacing="10"
+        mt="12"
       >
-        <div v-for="attributes in page" :key="attributes.title">
-          <nuxt-link
-            v-if="attributes.title && attributes.slug"
-            :to="
-              localePath({
-                name: 'slug',
-                params: {
-                  slug: attributes.slug
-                }
-              })
-            "
+        <!-- <div v-if="$apollo.loading">Loading...</div> -->
+        <c-accordion :allow-multiple="true" :default-index="[0]">
+          <c-accordion-item
+            v-for="(page, n) in faqs.data"
+            :key="`${page.attributes.title}_${n}`"
+            boxShadow="md"
+            borderWidth="1px"
+            p="5"
+            mb="4"
+            :width="[
+              //'15%', // 992px upwards
+              //'50%', // 480px upwards
+              //'50%', // 768px upwards
+              //'100%' // base
+              [1, 1 / 2, 1 / 2]
+            ]"
+            :_hover="{ boxShadow: 'lg' }"
           >
-            <CHeading as="h2" size="md">{{ attributes.title }}</CHeading>
-            <p>{{ attributes.description }}</p>
-          </nuxt-link>
-        </div>
-      </CBox>
-    </CSimpleGrid>
-    <!--CBox
+            <c-accordion-header>
+              <c-box flex="1" text-align="left">
+                <CHeading as="h2" size="md">{{
+                  page.attributes.title
+                }}</CHeading>
+              </c-box>
+              <c-accordion-icon />
+            </c-accordion-header>
+            <c-accordion-panel pb="4">
+              <span v-html="page.attributes.description"></span> -
+              <nuxt-link
+                v-if="page.attributes.title && page.attributes.slug"
+                :to="
+                  localePath({
+                    name: 'slug',
+                    params: {
+                      slug: page.attributes.slug
+                    }
+                  })
+                "
+                >Link
+              </nuxt-link>
+              <CPseudoBox fontSize="sm" color="gray.500" mt="4">
+                <!-- {{
+                  new Date(page.attributes.createdAt)
+                }} -->
+                Updated At:
+                {{
+                  $dateFns.format(
+                    page.attributes.updatedAt,
+                    'EEEE, yyyy-MM-dd HH:mm',
+                    {
+                      locale: `${
+                        $i18n.locale === 'en' ? 'en-US' : $i18n.locale
+                      }`
+                    }
+                  )
+                }}
+                <!-- {{ $i18n.locale }} -->
+              </CPseudoBox>
+            </c-accordion-panel>
+          </c-accordion-item>
+        </c-accordion>
+      </CSimpleGrid>
+      <!--CBox
       v-bind="mainStyles[colorMode]"
       d="flex"
       w="100vw"
@@ -121,12 +159,18 @@
         </CModal>
       </CFlex>
     </CBox-->
-  </CBox>
+    </CBox>
+  </div>
 </template>
 
 <script lang="js">
 import {
   CBox,
+  CPseudoBox,
+  CAccordion,
+  CAccordionItem,
+  CAccordionHeader,
+  CAccordionPanel,
   // CButton,
   // CAvatarGroup,
   // CAvatar,
@@ -145,7 +189,7 @@ import {
 } from '@chakra-ui/vue'
 
 import Vue from 'vue'
-import Pages from '~/components/Pages.vue'
+// import Pages from '~/components/Pages.vue'
 // import Cards from '~/components/Cards.vue'
 
 /* Gql queries */
@@ -154,8 +198,13 @@ import { getDataPages, getDataFaqs } from '~/queries'
 export default Vue.extend({
   name: 'IndexPage',
   components: {
-    Pages,
+    // Pages,
     CBox,
+    CPseudoBox,
+    CAccordion,
+    CAccordionItem,
+    CAccordionHeader,
+    CAccordionPanel,
     // CButton,
     // CAvatarGroup,
     // CAvatar,

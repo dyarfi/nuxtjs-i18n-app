@@ -4,8 +4,8 @@
     <CBox
       v-for="(page, n) in items.data"
       :key="n"
-      box-shadow="lg"
-      border-width="1px"
+      boxShadow="lg"
+      borderWidth="1px"
       p="5"
     >
       <div v-for="attributes in page" :key="attributes.slug">

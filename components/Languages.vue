@@ -4,16 +4,25 @@
       v-for="(locale, i) in showLocales"
       :key="i"
       :to="switchLocalePath(locale.code)"
-      class="font-bold"
+      :class="`${$i18n.locale === locale.code ? 'active' : ''}`"
     >
-      i18n: {{ locale.name }}
+      <CText
+        fontWeight="bold"
+        color="brand.primary"
+        textDecoration="underline"
+        display="inline"
+        mr="3"
+        >{{ locale.name }}</CText
+      >
     </nuxt-link>
   </span>
 </template>
 
 <script>
+import { CText } from '@chakra-ui/vue'
 export default {
   name: 'Languages',
+  components: { CText },
   computed: {
     showLocales() {
       // console.log(this.$route.params)
