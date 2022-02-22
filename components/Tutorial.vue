@@ -10,6 +10,8 @@
       mt="6"
       p="8"
       display="inline-block"
+      boxShadow="md"
+      :_hover="{ boxShadow: 'lg' }"
     >
       <a
         class="flex justify-center pt-8 sm:pt-0"
@@ -19,11 +21,13 @@
         <Logo />
       </a>
       <CPseudoBox my="4">
-        <h2 class="text-2xl leading-7 font-semibold">
+        <CHeading as="h2" fontSize="2rem">
           {{ $t('welcome') }}
-        </h2>
-        <p v-html="$t('recommend')" />
-        <p v-html="$t('started')" />
+        </CHeading>
+        <CBox my="6">
+          <p v-chakra v-html="$t('recommend')" />
+          <p v-html="$t('started')" />
+        </CBox>
       </CPseudoBox>
       <CPseudoBox display="flex">
         <a href="https://github.com/nuxt/nuxt.js" target="_blank"
@@ -66,10 +70,10 @@
 </template>
 
 <script>
-import { CBox, CPseudoBox } from '@chakra-ui/vue'
+import { CBox, CPseudoBox, CHeading } from '@chakra-ui/vue'
 import Logo from './Logo.vue'
 export default {
   name: 'NuxtTutorial',
-  components: { Logo, CBox, CPseudoBox }
+  components: { Logo, CBox, CPseudoBox, CHeading }
 }
 </script>

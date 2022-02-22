@@ -49,6 +49,7 @@ const getDataFaqCategories = gql`
           title
           slug
           description
+          icon
           createdAt
         }
       }

@@ -12,13 +12,34 @@ export default {
     htmlAttrs: {
       lang: defaultLocale
     },
+    // Metas
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    // Links
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com'
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: true
+      },
+      {
+        rel: 'stylesheet', // Playfair+Display
+        href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap'
+      }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -73,7 +94,12 @@ export default {
     //     PhCube
     //   }
     // },
+    // fontFamily: 'Roboto',
     extendTheme: {
+      fonts: {
+        heading: '"Playfair Display", sans-serif',
+        body: '"Roboto", sans-serif'
+      },
       colors: {
         primary: '#86BBD8',
         secondary: '#F26419',

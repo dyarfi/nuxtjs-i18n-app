@@ -12,19 +12,31 @@
         <Pages :items="pages" />
       </CBox> -->
 
+      <!-- <CBox my="6" mx="auto">
+        <c-stack :spacing="3">
+          <c-input-group>
+            <c-input-left-element
+              ><c-icon name="phone" color="gray.300"
+            /></c-input-left-element>
+            <c-input type="phone" placeholder="Phone number" />
+          </c-input-group>
+        </c-stack>
+      </CBox> -->
+
       <CSimpleGrid
         v-if="faqCategories && faqCategories.data.length"
-        maxW="xxl"
         mx="auto"
-        :columns="[1, 2, 3]"
-        :spacing="5"
+        :w="['100%']"
+        :columns="[1, 1, 3]"
+        :spacing="[1, 1, 12]"
       >
         <CBox
           v-for="(category, n) in faqCategories.data"
           :key="`${category.attributes.title}_${n}`"
           boxShadow="md"
           borderWidth="1px"
-          p="5"
+          py="6"
+          px="8"
           mt="8"
           mb="4"
           mx="auto"
@@ -35,20 +47,29 @@
             '100%' // base
             // '33%'
           ]"
-          maxW="sm"
+          maxW="xxl"
           border-width="1px"
           rounded="lg"
           overflow="hidden"
           :_hover="{ boxShadow: 'lg' }"
         >
-          <CText as="h2" fontSize="2rem" fontWeight="bold">{{
-            category.attributes.title
-          }}</CText>
-          <p>{{ category.attributes.description }}</p>
+          <CHeading as="h2" fontSize="2rem" mb="4">
+            {{ category.attributes.title }}
+            <span v-chakra float="right"
+              ><c-image
+                objectFit="cover"
+                h="45px"
+                :alt="category.attributes.title"
+                :src="`/img/icon/${category.attributes.icon}`"
+            /></span>
+          </CHeading>
+          <div v-chakra color="gray.400" fontSize=".98rem" my="2">
+            {{ category.attributes.description }}
+          </div>
         </CBox>
       </CSimpleGrid>
 
-      <CBox>
+      <!-- <CBox my="6" mx="auto">
         <c-stack :spacing="3">
           <c-select
             v-model="sortMode"
@@ -60,7 +81,7 @@
             <option value="sort[createdAt]">Created At</option>
           </c-select>
         </c-stack>
-      </CBox>
+      </CBox> -->
 
       <CSimpleGrid
         v-if="faqs && faqs.data && faqs.data.length"
@@ -77,7 +98,7 @@
             boxShadow="md"
             borderWidth="1px"
             p="5"
-            mb="4"
+            mb="6"
             :width="[
               //'15%', // 992px upwards
               //'50%', // 480px upwards
@@ -222,6 +243,7 @@ import {
   CAccordionItem,
   CAccordionHeader,
   CAccordionPanel,
+  CImage,
   // CButton,
   // CAvatarGroup,
   // CAvatar,
@@ -240,6 +262,9 @@ import {
 } from '@chakra-ui/vue'
 
 import Vue from 'vue'
+// import { PhHorse, PhHeart, PhCube } from "phosphor-vue";
+// import { PhHorse, PhHeart, PhCube } from "phosphor-vue";
+
 // import Pages from '~/components/Pages.vue'
 // import Cards from '~/components/Cards.vue'
 
@@ -256,6 +281,8 @@ export default Vue.extend({
     CAccordionItem,
     CAccordionHeader,
     CAccordionPanel,
+    CImage,
+    // Icons
     // CButton,
     // CAvatarGroup,
     // CAvatar,
