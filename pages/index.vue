@@ -2,6 +2,13 @@
   <div>
     <CBox :width="['90%', '75%']" mx="auto" py="25">
       <header>
+        <img
+          v-chakra
+          h="42"
+          mb="2"
+          display="inline"
+          :src="require('~/static/img/link-simple-light.svg')"
+        />
         <Languages />
       </header>
       <div class="flex items-top justify-center">
@@ -110,7 +117,7 @@
           >
             <c-accordion-header>
               <c-box flex="1" text-align="left">
-                <CHeading as="h2" size="md">{{
+                <CHeading as="h2" size="lg">{{
                   page.attributes.title
                 }}</CHeading>
               </c-box>
@@ -267,6 +274,7 @@ import Vue from 'vue'
 
 // import Pages from '~/components/Pages.vue'
 // import Cards from '~/components/Cards.vue'
+// import Logo from '~/static/img/link-simple-light.svg';
 
 /* Gql queries */
 import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
@@ -274,6 +282,8 @@ import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
 export default Vue.extend({
   name: 'IndexPage',
   components: {
+    // App
+    // Logo,
     // Pages,
     CBox,
     CPseudoBox,
