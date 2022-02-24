@@ -35,7 +35,7 @@
               display="inline"
               verticalAlign="middle"
             >
-              NUXT<span v-chakra color="green.500">JS</span>
+              NUXTJS
             </h2>
           </nuxt-link>
           <Languages />
@@ -57,7 +57,7 @@
       :width="['100%']"
       mx="auto"
       bgGradient="linear(to-l, #7928CA, #FF0080)"
-      minH="320px"
+      minH="260px"
       position="absolute"
       top="0"
       left="0"

@@ -28,31 +28,30 @@
         mx="auto"
         :py="[2, 0]"
         :columns="[1, 1, 3, 3]"
-        :spacing="[1, 1, 12]"
+        :spacing="[1, 1, 3, 12]"
       >
         <CBox
           v-for="(category, n) in faqCategories.data"
           :key="`${category.attributes.title}_${n}`"
           boxShadow="md"
           borderWidth="1px"
-          py="6"
-          px="8"
-          mt="8"
-          mb="4"
           mx="auto"
+          maxW="xxl"
+          rounded="lg"
+          overflow="hidden"
+          :py="[5, 4, 6]"
+          :px="[6, 8]"
+          :mt="[8]"
+          :mb="[0, 2, 1]"
           :width="[
             '100%' // base
           ]"
-          maxW="xxl"
-          border-width="1px"
-          rounded="lg"
-          overflow="hidden"
           :_hover="{ boxShadow: 'lg' }"
         >
           <CHeading
             as="h2"
-            mb="4"
-            :fontSize="['1.5rem', '1.6rem', '1.85rem', '2rem']"
+            :mb="[2, 3, 4]"
+            :fontSize="['1.5rem', '1.65rem', '1.7rem', '2rem']"
           >
             {{ category.attributes.title }}
             <span v-chakra float="right"
@@ -100,15 +99,16 @@
             :key="`${page.attributes.title}_${n}`"
             boxShadow="md"
             borderWidth="1px"
-            p="5"
             mb="6"
             :width="[
               //'15%', // 992px upwards
               //'50%', // 480px upwards
               //'50%', // 768px upwards
-              //'100%' // base
-              [1, 1 / 2, 1 / 2]
+              '100%' // base
+              //[1, 1 / 2, 1 / 2]
             ]"
+            :py="[5, 4, 6]"
+            :px="[3, 5]"
             :_hover="{ boxShadow: 'lg' }"
           >
             <c-accordion-header>

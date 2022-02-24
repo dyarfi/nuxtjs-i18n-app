@@ -82,6 +82,10 @@ export default {
    * Add extend the plugin options under the `chakra` key.
    **/
   chakra: {
+    // config: {
+    //   cssVarPrefix: 'c'
+    // },
+    // initialColorMode: 'light',
     // icons: {
     //   // Here we state that we use `fa`
     //   // icons library for Chakra's
@@ -141,6 +145,10 @@ export default {
         //   borderRadius: theme.sizes[0]
         // }), //
         // CSelectInput: ({ colorMode, theme }) => ({
+        //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
+        //   borderRadius: theme.sizes[0]
+        // })
+        // CMenu: () => ({
         //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
         //   borderRadius: theme.sizes[0]
         // })
