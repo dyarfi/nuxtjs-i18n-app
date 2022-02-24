@@ -1,16 +1,15 @@
-<!--template>
-  <div
-    class="relative min-h-screen bg-gray-100 sm:items-center sm:pt-0 z-0 py-4"
-  >
-    <Nuxt />
-  </div>
-</template-->
 <template>
   <CThemeProvider>
     <CColorModeProvider>
-      <CBox fontFamily="body" as="main">
+      <CBox
+        fontFamily="body"
+        as="main"
+        v-bind="mainStyles[colorMode || 'light']"
+      >
         <CReset />
+        <!-- <Header :props="{ colorMode, theme, toggleColorMode }" /> -->
         <Nuxt />
+        <Footer />
       </CBox>
     </CColorModeProvider>
   </CThemeProvider>
@@ -23,14 +22,30 @@ import {
   CReset,
   CBox
 } from '@chakra-ui/vue'
+import Vue from 'vue'
 
-export default {
+export default Vue.extend({
   name: 'DefaultLayout',
   components: {
     CThemeProvider,
     CColorModeProvider,
     CReset,
     CBox
+  },
+  data() {
+    return {
+      colorMode: 'light',
+      mainStyles: {
+        dark: {
+          bg: 'gray.700',
+          color: 'whiteAlpha.900'
+        },
+        light: {
+          bg: 'white',
+          color: 'gray.900'
+        }
+      }
+    }
   },
   head({ $i18n }) {
     return {
@@ -39,7 +54,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style>

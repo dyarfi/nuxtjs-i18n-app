@@ -1,19 +1,10 @@
 <template>
   <div>
-    <CBox :width="['90%', '75%']" mx="auto" py="25">
-      <header>
-        <img
-          v-chakra
-          h="42"
-          mb="2"
-          display="inline"
-          :src="require('~/static/img/link-simple-light.svg')"
-        />
-        <Languages />
-      </header>
-      <div class="flex items-top justify-center">
+    <Header />
+    <div v-chakra zIndex="0" position="relative">
+      <CBox :width="['100%', '75%']" :px="[2, 0]" mx="auto" :py="[2, 0]">
         <Tutorial />
-      </div>
+      </CBox>
       <!-- <Cards /> -->
       <!-- <CBox my="12">
         <Pages :items="pages" />
@@ -32,9 +23,11 @@
 
       <CSimpleGrid
         v-if="faqCategories && faqCategories.data.length"
+        :width="['100%', '75%']"
+        :px="[2, 0]"
         mx="auto"
-        :w="['100%']"
-        :columns="[1, 1, 3]"
+        :py="[2, 0]"
+        :columns="[1, 1, 3, 3]"
         :spacing="[1, 1, 12]"
       >
         <CBox
@@ -48,11 +41,7 @@
           mb="4"
           mx="auto"
           :width="[
-            //'15%', // 992px upwards
-            //'50%', // 480px upwards
-            //'50%', // 768px upwards
             '100%' // base
-            // '33%'
           ]"
           maxW="xxl"
           border-width="1px"
@@ -60,7 +49,11 @@
           overflow="hidden"
           :_hover="{ boxShadow: 'lg' }"
         >
-          <CHeading as="h2" fontSize="2rem" mb="4">
+          <CHeading
+            as="h2"
+            mb="4"
+            :fontSize="['1.5rem', '1.6rem', '1.85rem', '2rem']"
+          >
             {{ category.attributes.title }}
             <span v-chakra float="right"
               ><c-image
@@ -92,9 +85,12 @@
 
       <CSimpleGrid
         v-if="faqs && faqs.data && faqs.data.length"
-        maxW="xxl"
+        :width="['100%', '75%']"
+        :px="[2, 0]"
+        :py="[2, 0]"
         :columns="[1]"
         :spacing="10"
+        mx="auto"
         mt="12"
       >
         <!-- <div v-if="$apollo.loading">Loading...</div> -->
@@ -138,9 +134,7 @@
                 >Link
               </nuxt-link>
               <CPseudoBox fontSize="sm" color="gray.500" mt="4">
-                <!-- {{
-                  new Date(page.attributes.createdAt)
-                }} -->
+                <!-- {{ new Date(page.attributes.createdAt) }} -->
                 {{ $t('updatedAt') }}:
                 {{
                   $dateFns.format(
@@ -238,7 +232,7 @@
         </CModal>
       </CFlex>
     </CBox-->
-    </CBox>
+    </div>
   </div>
 </template>
 
@@ -276,6 +270,8 @@ import Vue from 'vue'
 // import Cards from '~/components/Cards.vue'
 // import Logo from '~/static/img/link-simple-light.svg';
 
+// import Header from '../components/global/Header.vue'
+
 /* Gql queries */
 import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
 
@@ -309,34 +305,12 @@ export default Vue.extend({
     // CFlex,
     CHeading
   },
-  inject: ['$chakraColorMode', '$toggleColorMode'],
   data() {
     // console.log(this.$apollo);
     return {
       pages: {},
       sortMode:'',
       showModal: false,
-      mainStyles: {
-        dark: {
-          bg: 'gray.700',
-          color: 'whiteAlpha.900'
-        },
-        light: {
-          bg: 'white',
-          color: 'gray.900'
-        }
-      }
-    }
-  },
-  computed: {
-    colorMode () {
-      return this.$chakraColorMode()
-    },
-    theme () {
-      return this.$chakraTheme()
-    },
-    toggleColorMode () {
-      return this.$toggleColorMode
     }
   },
   methods: {
@@ -348,7 +322,7 @@ export default Vue.extend({
         duration: 10000,
         isClosable: true
       })
-    }
+    },
   },
   // Apollo queries server side
   apollo: {

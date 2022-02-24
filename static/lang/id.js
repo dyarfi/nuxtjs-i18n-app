@@ -1,5 +1,5 @@
 export default {
-  welcome: 'Selamat datang di Aplikasi Nuxt Anda',
+  welcome: 'Selamat datang di Pusat Bantuan Strapi NuxtJS',
   recommend:
     'Sebaiknya Anda melihat <a href="https://nuxtjs.org" target="_blank">dokumentasi Nuxt</a>, apakah Anda baru atau memiliki pengalaman sebelumnya dengan kerangka kerja.<br/>',
   started:

@@ -136,12 +136,12 @@ export default {
         /**
          * Use a function to compute desired styles
          **/
-        CButton: ({ /* colorMode, */ theme }) => ({
-          // bg: colorMode === 'light' ? 'tomato' : 'hotpink',
-          borderRadius: theme.sizes[0]
-        }) //,
-        // CSelectInput: ({ /* colorMode, */ theme }) => ({
-        //   // bg: colorMode === 'light' ? 'tomato' : 'hotpink',
+        // CButton: ({ colorMode, theme }) => ({
+        //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
+        //   borderRadius: theme.sizes[0]
+        // }), //
+        // CSelectInput: ({ colorMode, theme }) => ({
+        //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
         //   borderRadius: theme.sizes[0]
         // })
       }

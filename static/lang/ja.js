@@ -1,5 +1,5 @@
 export default {
-  welcome: 'Nuxtアプリケーションへようこそ',
+  welcome: 'ストラップNuxtJSヘルプセンターへようこそ',
   recommend:
     '<a href="https://nuxtjs.org" target="_blank"> Nuxtドキュメント</a>をご覧になることをお勧めします、フレームワークを初めて使用する場合でも、以前にフレームワークを使用したことがある場合でも。<br/>',
   started:
