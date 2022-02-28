@@ -24,7 +24,7 @@
     :pb="[10]"
     zIndex="1"
     color="gray.500"
-    mt="10"
+    mt="16"
   >
     <div v-chakra display="block" href="#" mx="auto" textAlign="center">
       <Logo v-chakra :mx="['auto', 1]" mb="3" display="inline" />

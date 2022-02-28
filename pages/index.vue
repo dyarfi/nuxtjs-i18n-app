@@ -2,7 +2,8 @@
   <div>
     <Header />
     <div v-chakra zIndex="0" position="relative">
-      <CBox :width="['100%', '75%']" :px="[2, 0]" mx="auto" :py="[2, 0]">
+      <!-- <CBox :w="['md', 'xl']" :px="[2, 0]" mx="auto" :py="[2, 0]"> -->
+      <CBox :width="['100%', '75%']" :px="[2, 0]" :py="[2, 0]" mx="auto">
         <Tutorial />
       </CBox>
       <!-- <Cards /> -->
@@ -105,14 +106,19 @@
               //'15%', // 992px upwards
               //'50%', // 480px upwards
               //'50%', // 768px upwards
-              '100%' // base
               //[1, 1 / 2, 1 / 2]
+              '100%' // base
             ]"
             :py="[5, 4, 5]"
             :px="[3, 5]"
             :_hover="{ boxShadow: 'lg' }"
           >
-            <c-accordion-header>
+            <c-accordion-header
+              v-chakra="{
+                ':hover': { backgroundColor: 'transparent' },
+                ':focus': { boxShadow: 'none' }
+              }"
+            >
               <c-box flex="1" text-align="left">
                 <CHeading as="h2" size="lg" fontWeight="300">{{
                   page.attributes.title

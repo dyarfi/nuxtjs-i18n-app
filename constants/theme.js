@@ -56,6 +56,10 @@ const chakraTheme = {
         // bg: mode('white', 'blackAlpha.700'),
         color: colorMode === 'light' ? 'gray.900' : ''
       })
+      // CAccordionHeader: () => ({
+      //   hover: { backgroundColor: 'transparent' },
+      //   focus: { boxShadow: 'none' }
+      // })
       // CButton: ({ colorMode, theme }) => ({
       //   bg: colorMode === 'light' ? 'white' : 'whiteAlpha.400',
       //   // bg: mode('white', 'blackAlpha.700'),
