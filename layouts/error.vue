@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 export default {
   layout: 'LayoutError',
   props: { error: { type: Object, default: () => {} } }

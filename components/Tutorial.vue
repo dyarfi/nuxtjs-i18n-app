@@ -14,23 +14,6 @@
     zIndex="0"
     textAlign="center"
   >
-    <a
-      v-chakra
-      display="block"
-      href="#"
-      target="_blank"
-      mx="auto"
-      textAlign="center"
-    >
-      <Logo v-chakra :mx="['auto', 3, 2, 4]" mb="3" display="inline" />
-      <StrapiLogo v-chakra :mx="['auto', 3, 2, 4]" mb="3" display="inline" />
-      <ChakraUiLogo
-        v-chakra
-        :mx="['auto', 2, 3, 2, 4]"
-        mb="3"
-        display="inline"
-      />
-    </a>
     <CPseudoBox my="4">
       <CHeading as="h2" :fontSize="['1.5rem', '2rem']" :my="['1rem', '1.5rem']">
         {{ $t('welcome') }}
@@ -83,9 +66,8 @@
 
 <script>
 import { CBox, CPseudoBox, CHeading } from '@chakra-ui/vue'
-import Logo from './Logo.vue'
 export default {
   name: 'NuxtTutorial',
-  components: { Logo, CBox, CPseudoBox, CHeading }
+  components: { CBox, CPseudoBox, CHeading }
 }
 </script>

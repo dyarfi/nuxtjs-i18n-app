@@ -1,5 +1,5 @@
 import { defaultLocale, locales, i18nLocales } from './constants/i18nLocales'
-// import { PhHorse, PhHeart, PhCube } from 'phosphor-vue'
+import { chakraTheme } from './constants/theme'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -7,39 +7,45 @@ export default {
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    title: 'nuxtjs-i18n-app',
-    htmlAttrs: {
-      lang: defaultLocale
-    },
-    // Metas
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
-    ],
-    // Links
-    link: [
-      {
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return {
+      title: 'nuxtjs-i18n-app',
+      htmlAttrs: {
+        // lang: defaultLocale
+        ...i18nHead.htmlAttrs
       },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com'
-      },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: true
-      },
-      {
-        rel: 'stylesheet', // Playfair+Display
-        href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap'
-      }
-    ]
+      // Metas
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: '' },
+        { name: 'format-detection', content: 'telephone=no' },
+        ...i18nHead.meta
+      ],
+      // Links
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/favicon.ico'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: true
+        },
+        {
+          rel: 'stylesheet', // Playfair+Display
+          href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap'
+        },
+        ...i18nHead.link
+      ]
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -49,7 +55,7 @@ export default {
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -81,80 +87,7 @@ export default {
   /**
    * Add extend the plugin options under the `chakra` key.
    **/
-  chakra: {
-    // config: {
-    //   cssVarPrefix: 'c'
-    // },
-    // initialColorMode: 'light',
-    // icons: {
-    //   // Here we state that we use `fa`
-    //   // icons library for Chakra's
-    //   // internal icon parser
-    //   iconPack: 'phosphor',
-    //   iconSet: {
-    //     // ...phosphor
-    //     PhHorse,
-    //     PhHeart,
-    //     PhCube
-    //   }
-    // },
-    // fontFamily: 'Roboto',
-    extendTheme: {
-      fonts: {
-        heading: '"Playfair Display", sans-serif',
-        body: '"Roboto", sans-serif'
-      },
-      colors: {
-        primary: '#86BBD8',
-        secondary: '#F26419',
-        info: '#33658A',
-        error: '#F6AE2D',
-        success: '#315771',
-        muted: '#f5f5f5',
-        brand: {
-          primary: '#86BBD8',
-          secondary: '#F26419',
-          info: '#33658A',
-          error: '#F6AE2D',
-          success: '#315771',
-          muted: '#f5f5f5'
-        }
-      },
-      // radii: {
-      //   none: '0',
-      // sm: '0.125rem',
-      // md: '0.25rem',
-      // lg: '0.5rem',
-      // full: '9999px'
-      //   sm: '0',
-      //   md: '0',
-      //   lg: '0',
-      //   full: '9999px'
-      // },
-      // fonts: {
-      //   heading: '"Avenir Next", sans-serif',
-      //   body: 'system-ui, sans-serif',
-      //   mono: 'Menlo, monospace'
-      // },
-      baseStyles: {
-        /**
-         * Use a function to compute desired styles
-         **/
-        // CButton: ({ colorMode, theme }) => ({
-        //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
-        //   borderRadius: theme.sizes[0]
-        // }), //
-        // CSelectInput: ({ colorMode, theme }) => ({
-        //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
-        //   borderRadius: theme.sizes[0]
-        // })
-        // CMenu: () => ({
-        //   bg: colorMode === 'light' ? 'tomato' : 'hotpink',
-        //   borderRadius: theme.sizes[0]
-        // })
-      }
-    }
-  },
+  chakra: chakraTheme,
 
   // Modules: https://github.com/nuxt-community/apollo-module
   apollo: {
@@ -184,5 +117,8 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  // Watch property: https://nuxtjs.org/docs/configuration-glossary/configuration-watch
+  watch: ['~/constants/*']
 }

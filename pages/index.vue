@@ -120,9 +120,11 @@
               <c-accordion-icon />
             </c-accordion-header>
             <c-accordion-panel pb="4">
-              <span v-html="page.attributes.description"></span> -
+              <p v-html="page.attributes.description" />
               <nuxt-link
                 v-if="page.attributes.title && page.attributes.slug"
+                v-chakra
+                fontSize="1rem"
                 :to="
                   localePath({
                     name: 'slug',
@@ -131,7 +133,7 @@
                     }
                   })
                 "
-                >Link
+                >[Link]
               </nuxt-link>
               <CPseudoBox fontSize="sm" color="gray.500" mt="4">
                 <!-- {{ new Date(page.attributes.createdAt) }} -->
@@ -237,6 +239,8 @@
 </template>
 
 <script lang="js">
+import Vue from 'vue'
+
 import {
   CBox,
   CPseudoBox,
@@ -245,32 +249,12 @@ import {
   CAccordionHeader,
   CAccordionPanel,
   CImage,
-  // CButton,
-  // CAvatarGroup,
-  // CAvatar,
-  // CAvatarBadge,
-  // CModal,
-  // CModalContent,
-  // CModalOverlay,
-  // CModalHeader,
-  // CModalFooter,
-  // CModalBody,
-  // CModalCloseButton,
   CSimpleGrid,
-  // CIconButton,
-  // CFlex,
   CHeading
 } from '@chakra-ui/vue'
 
-import Vue from 'vue'
-// import { PhHorse, PhHeart, PhCube } from "phosphor-vue";
-// import { PhHorse, PhHeart, PhCube } from "phosphor-vue";
-
-// import Pages from '~/components/Pages.vue'
-// import Cards from '~/components/Cards.vue'
-// import Logo from '~/static/img/link-simple-light.svg';
-
-// import Header from '../components/global/Header.vue'
+import Header from "@/components/global/Header"
+import Tutorial from "@/components/Tutorial"
 
 /* Gql queries */
 import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
@@ -278,9 +262,8 @@ import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
 export default Vue.extend({
   name: 'IndexPage',
   components: {
-    // App
-    // Logo,
-    // Pages,
+    Header,
+    Tutorial,
     CBox,
     CPseudoBox,
     CAccordion,
@@ -288,25 +271,10 @@ export default Vue.extend({
     CAccordionHeader,
     CAccordionPanel,
     CImage,
-    // Icons
-    // CButton,
-    // CAvatarGroup,
-    // CAvatar,
-    // CAvatarBadge,
-    // CModal,
-    // CModalContent,
-    // CModalOverlay,
-    // CModalHeader,
-    // CModalFooter,
-    // CModalBody,
-    // CModalCloseButton,
     CSimpleGrid,
-    // CIconButton,
-    // CFlex,
     CHeading
   },
   data() {
-    // console.log(this.$apollo);
     return {
       pages: {},
       sortMode:'',

@@ -19,7 +19,13 @@
           alignContent="stretch"
           verticalAlign="middle"
         >
-          <nuxt-link v-chakra to="/" :mr="[0, 4]" :mb="[2, 4]" :w="['120px']">
+          <nuxt-link
+            v-chakra
+            :to="localePath('/')"
+            :mr="[0, 4]"
+            :mb="[2, 4]"
+            :w="['120px']"
+          >
             <img
               v-chakra
               h="39"
@@ -68,7 +74,14 @@
 </template>
 
 <script>
+import { CBox, CIconButton } from '@chakra-ui/vue'
+import Languages from '@/components/Languages.vue'
 export default {
+  components: {
+    Languages,
+    CBox,
+    CIconButton
+  },
   inject: ['$chakraColorMode', '$toggleColorMode'],
   computed: {
     colorMode() {
@@ -81,13 +94,5 @@ export default {
       return this.$toggleColorMode
     }
   }
-  // props: {
-  //   // type: Array,
-  //   // required: true,
-  //   // default: () => []
-  //   colorMode: { type: String, default: () => '' },
-  //   theme: { type: String, default: () => '' },
-  //   toggleColorMode: { type: Boolean, default: () => false }
-  // }
 }
 </script>

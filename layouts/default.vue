@@ -16,13 +16,16 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 import {
   CThemeProvider,
   CColorModeProvider,
   CReset,
   CBox
 } from '@chakra-ui/vue'
-import Vue from 'vue'
+
+import Footer from '@/components/global/Footer'
 
 export default Vue.extend({
   name: 'DefaultLayout',
@@ -30,7 +33,8 @@ export default Vue.extend({
     CThemeProvider,
     CColorModeProvider,
     CReset,
-    CBox
+    CBox,
+    Footer
   },
   data() {
     return {

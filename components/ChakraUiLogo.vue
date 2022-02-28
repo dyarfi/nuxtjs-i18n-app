@@ -2,8 +2,8 @@
   <svg
     viewBox="0 0 998 257"
     xmlns="http://www.w3.org/2000/svg"
-    width="200px"
-    height="50px"
+    width="180px"
+    height="35px"
     fill="none"
   >
     <path
