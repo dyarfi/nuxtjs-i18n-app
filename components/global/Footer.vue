@@ -8,8 +8,11 @@
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundImage: 'linear-gradient(to right, #7928CA, #FF0080)',
-        'clip-path': 'polygon(0 16%, 100% 0, 100% 1000%, 0 100%)',
+        // backgroundImage: 'linear-gradient(to right, #beffd2, #addbe9)',
+        backgroundColor: 'rgba(28,206,234,0.82)',
+        background:
+          'linear-gradient(-45deg, rgba(147,26,222,0.83) 0%, rgba(28,206,234,0.82) 100%)',
+        clipPath: 'polygon(0 16%, 100% 0, 100% 1000%, 0 100%)',
         zIndex: -1,
         height: '100%',
         margin: '0rem'

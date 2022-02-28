@@ -2,8 +2,10 @@
   <CThemeProvider>
     <CColorModeProvider>
       <CBox
-        fontFamily="body"
         as="main"
+        fontFamily="body"
+        fontSize="md"
+        fontColor="grey.500"
         v-bind="mainStyles[colorMode || 'light']"
       >
         <CReset />

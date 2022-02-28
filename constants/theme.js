@@ -10,8 +10,8 @@
 const chakraTheme = {
   extendTheme: {
     fonts: {
-      heading: '"Playfair Display", sans-serif',
-      body: '"Roboto", sans-serif'
+      heading: '"Roboto", sans-serif',
+      body: '"Work Sans", sans-serif'
     },
     colors: {
       primary: '#86BBD8',

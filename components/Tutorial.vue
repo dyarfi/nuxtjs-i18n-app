@@ -15,7 +15,12 @@
     textAlign="center"
   >
     <CPseudoBox my="4">
-      <CHeading as="h2" :fontSize="['1.5rem', '2rem']" :my="['1rem', '1.5rem']">
+      <CHeading
+        as="h2"
+        :fontSize="['1.5rem', '2rem']"
+        :my="['1rem', '1.5rem']"
+        fontWeight="300"
+      >
         {{ $t('welcome') }}
       </CHeading>
       <CBox my="6">

@@ -28,7 +28,7 @@
           >
             <img
               v-chakra
-              h="39"
+              h="36"
               :mb="[0]"
               display="inline"
               :src="require('~/static/img/link-simple-light.svg')"
@@ -62,7 +62,7 @@
       v-chakra
       :width="['100%']"
       mx="auto"
-      bgGradient="linear(to-l, #7928CA, #FF0080)"
+      bgGradient="linear(-45deg, #7928CA, #FF0080)"
       minH="260px"
       position="absolute"
       top="0"

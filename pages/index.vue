@@ -51,7 +51,8 @@
           <CHeading
             as="h2"
             :mb="[2, 3, 4]"
-            :fontSize="['1.5rem', '1.65rem', '1.7rem', '2rem']"
+            :fontSize="['1.25rem', '1.3rem', '1.5rem', '1.65rem']"
+            fontWeight="300"
           >
             {{ category.attributes.title }}
             <span v-chakra float="right"
@@ -107,24 +108,29 @@
               '100%' // base
               //[1, 1 / 2, 1 / 2]
             ]"
-            :py="[5, 4, 6]"
+            :py="[5, 4, 5]"
             :px="[3, 5]"
             :_hover="{ boxShadow: 'lg' }"
           >
             <c-accordion-header>
               <c-box flex="1" text-align="left">
-                <CHeading as="h2" size="lg">{{
+                <CHeading as="h2" size="lg" fontWeight="300">{{
                   page.attributes.title
                 }}</CHeading>
               </c-box>
-              <c-accordion-icon />
+              <c-accordion-icon size="26px" />
             </c-accordion-header>
             <c-accordion-panel pb="4">
-              <p v-html="page.attributes.description" />
-              <nuxt-link
+              <p
+                v-chakra
+                color="gray.600"
+                v-html="page.attributes.description"
+              />
+              <!-- <nuxt-link
                 v-if="page.attributes.title && page.attributes.slug"
                 v-chakra
-                fontSize="1rem"
+                color="gray.600"
+                fontSize=".88rem"
                 :to="
                   localePath({
                     name: 'slug',
@@ -134,7 +140,7 @@
                   })
                 "
                 >[Link]
-              </nuxt-link>
+              </nuxt-link> -->
               <CPseudoBox fontSize="sm" color="gray.500" mt="4">
                 <!-- {{ new Date(page.attributes.createdAt) }} -->
                 {{ $t('updatedAt') }}:
@@ -279,6 +285,7 @@ export default Vue.extend({
       pages: {},
       sortMode:'',
       showModal: false,
+      isExpanded: false,
     }
   },
   methods: {
