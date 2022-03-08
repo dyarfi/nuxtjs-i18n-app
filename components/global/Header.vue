@@ -25,28 +25,15 @@
             :mr="[0, 4]"
             :mb="[2, 4]"
             :w="['120px']"
+            alignSelf="center"
           >
-            <img
-              v-chakra
-              h="36"
-              :mb="[0]"
-              display="inline"
-              :src="require('~/static/img/link-simple-light.svg')"
-            />
-            <h2
-              v-chakra
-              color="white"
-              fontSize="1.25rem"
-              fontWeight="bolder"
-              display="inline"
-              verticalAlign="middle"
-            >
-              NUXTJS
-            </h2>
+            <Logo />
           </nuxt-link>
-          <Languages />
-          <CBox mb="3" float="right">
+          <CBox mb="3" float="right" display="flex">
+            <Languages />
             <CIconButton
+              size="sm"
+              :ml="[1]"
               :mr="[0]"
               :icon="colorMode === 'light' ? 'moon' : 'sun'"
               :aria-label="`Switch to ${
@@ -75,9 +62,11 @@
 
 <script>
 import { CBox, CIconButton } from '@chakra-ui/vue'
+import Logo from '@/components/LogoFaqly.vue'
 import Languages from '@/components/Languages.vue'
 export default {
   components: {
+    Logo,
     Languages,
     CBox,
     CIconButton

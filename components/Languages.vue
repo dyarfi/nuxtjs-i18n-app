@@ -1,7 +1,6 @@
 <template>
-  <div v-chakra>
-    <span class="lang-switcher">
-      <!-- <nuxt-link
+  <div v-chakra alignItems="center">
+    <!-- <nuxt-link
         v-for="(locale, i) in showLocales"
         :key="i"
         :to="switchLocalePath(locale.code)"
@@ -16,7 +15,7 @@
           >{{ locale.name }}</CText
         >
       </nuxt-link> -->
-      <!-- <c-box mb="3" :w="['125px', '150px']" mx="auto" textAlign="center">
+    <!-- <c-box mb="3" :w="['125px', '150px']" mx="auto" textAlign="center">
         <c-select
           v-chakra
           :placeholder="localeName"
@@ -38,29 +37,41 @@
           </option>
         </c-select>
       </c-box> -->
-      <c-menu>
-        <c-menu-button as="button" right-icon="chevron-down" minW="120px">
-          {{ localeName
-          }}<img
-            v-chakra
-            ml="2"
-            mr="1"
-            :src="`/img/country/${$i18n.locale}.png`"
-          />
-        </c-menu-button>
-        <c-menu-list p="0" minW="120px" position="relative" zIndex="2">
-          <c-menu-item
-            v-for="(locale, i) in showLocales"
-            :key="i"
-            :value="`${
-              $i18n.defaultLocale === locale.code ? '/' : locale.code
-            }`"
-            w="100%"
-            role="menuitem"
-            @click="(v) => onChangeSelect(v)"
-          >
-            {{ locale.name }}
-            <!-- 
+    <c-menu v-slot="{ isOpen }">
+      <c-menu-button
+        as="button"
+        minW="120px"
+        fontWeight="400"
+        :is-active="isOpen"
+        :right-icon="isOpen ? 'chevron-up' : 'chevron-down'"
+        size="sm"
+      >
+        {{ localeName
+        }}<img
+          v-chakra
+          ml="2"
+          mr="1"
+          :src="`/img/country/${$i18n.locale}.png`"
+        />
+      </c-menu-button>
+      <c-menu-list
+        p="0"
+        minW="120px"
+        position="relative"
+        zIndex="2"
+        inset="-10px auto auto 0"
+      >
+        <c-menu-item
+          v-for="(locale, i) in showLocales"
+          :key="i"
+          :value="`${$i18n.defaultLocale === locale.code ? '/' : locale.code}`"
+          w="100%"
+          role="menuitem"
+          fontSize="sm"
+          @click="(v) => onChangeSelect(v)"
+        >
+          {{ locale.name }}
+          <!-- 
               click will detect img if img clicked
               <c-image
               :src="`/img/country/${locale.code}.png`"
@@ -68,8 +79,8 @@
               zIndex="0"
             /> 
             -->
-          </c-menu-item>
-          <!-- <c-menu-item h="40px">
+        </c-menu-item>
+        <!-- <c-menu-item h="40px">
             <c-image
               size="2rem"
               rounded="full"
@@ -79,9 +90,8 @@
             />
             <span>Simon the pensive</span>
           </c-menu-item> -->
-        </c-menu-list>
-      </c-menu>
-    </span>
+      </c-menu-list>
+    </c-menu>
   </div>
 </template>
 
@@ -97,6 +107,7 @@ export default {
   data({ $i18n }) {
     return {
       // languageType: '',
+      // isOpen: false,
       localeName: $i18n.locales.find((i18n) => i18n.code === $i18n.locale).name
     }
   },

@@ -11,6 +11,7 @@ const chakraTheme = {
   extendTheme: {
     fonts: {
       heading: '"Roboto", sans-serif',
+      // body: '"Montserrat", sans-serif'
       body: '"Work Sans", sans-serif'
     },
     colors: {
@@ -50,6 +51,12 @@ const chakraTheme = {
         bg: colorMode === 'light' ? 'whiteAlpha.400' : 'whiteAlpha.400',
         // bg: mode('white', 'blackAlpha.700'),
         color: colorMode === 'light' ? 'gray.900' : 'whiteAlpha.400'
+      }),
+      CMenuButton: ({ colorMode }) => ({
+        bg: colorMode === 'light' ? 'white' : 'whiteAlpha.400'
+        // bg: mode('white', 'blackAlpha.700'),
+        // color: colorMode === 'light' ? 'gray.900' : '',
+        // borderRadius: theme.sizes[0]
       }),
       CBox: ({ colorMode }) => ({
         bg: colorMode === 'light' ? '' : '',
