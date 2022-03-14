@@ -1,5 +1,7 @@
 export default {
   welcome: 'Welcome to Strapi NuxtJS Help Center',
+  search: 'Search',
+  searchnotfound: 'Search not found',
   recommend:
     'We recommend you take a look at the <a href="https://nuxtjs.org" target="_blank">Nuxt documentation</a>, whether you are new or have previous experience with theframework.<br/>',
   started:

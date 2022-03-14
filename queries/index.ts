@@ -81,4 +81,20 @@ const getDataFaqs = gql`
   }
 `
 
-export { getDataPages, getDataFaqCategories, getDataFaqs }
+const getDataSearch = gql`
+  query ($locale: I18NLocaleCode, $query: StringFilterInput) {
+    faqs(locale: $locale, filters: { title: $query, show: { eq: true } }) {
+      data {
+        attributes {
+          title
+          slug
+          description
+          createdAt
+          updatedAt
+        }
+      }
+    }
+  }
+`
+
+export { getDataPages, getDataFaqCategories, getDataFaqs, getDataSearch }

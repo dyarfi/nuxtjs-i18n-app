@@ -11,16 +11,7 @@
         <Pages :items="pages" />
       </CBox> -->
 
-      <!-- <CBox my="6" mx="auto">
-        <c-stack :spacing="3">
-          <c-input-group>
-            <c-input-left-element
-              ><c-icon name="phone" color="gray.300"
-            /></c-input-left-element>
-            <c-input type="phone" placeholder="Phone number" />
-          </c-input-group>
-        </c-stack>
-      </CBox> -->
+      <Search @query="(v) => searchEvent(v)" />
 
       <CSimpleGrid
         v-if="faqCategories && faqCategories.data.length"
@@ -102,6 +93,7 @@
             boxShadow="md"
             borderWidth="1px"
             mb="6"
+            background-color="white"
             :width="[
               //'15%', // 992px upwards
               //'50%', // 480px upwards
@@ -266,15 +258,17 @@ import {
 } from '@chakra-ui/vue'
 
 import Header from "@/components/global/Header"
+import Search from "@/components/global/Search"
 import Tutorial from "@/components/Tutorial"
 
 /* Gql queries */
-import { getDataPages, getDataFaqCategories, getDataFaqs } from '~/queries'
+import { getDataPages, getDataFaqCategories, getDataFaqs} from '~/queries'
 
 export default Vue.extend({
   name: 'IndexPage',
   components: {
     Header,
+    Search,
     Tutorial,
     CBox,
     CPseudoBox,
@@ -304,6 +298,12 @@ export default Vue.extend({
         isClosable: true
       })
     },
+    searchEvent(v) {
+      this.$router.push(
+        this.localePath(
+        { path: 'search', query: { query: v } })
+      )
+    }
   },
   // Apollo queries server side
   apollo: {
@@ -312,21 +312,21 @@ export default Vue.extend({
       variables() {
         return { locale: this.$i18n.locale }
       },
-      fetchPolicy: 'cache-and-network'
+      fetchPolicy: 'no-cache'
     },
     faqs: {
       query: getDataFaqs,
       variables() {
         return { locale: this.$i18n.locale }
       },
-      fetchPolicy: 'cache-and-network'
+      fetchPolicy: 'no-cache'
     },
     faqCategories: {
       query: getDataFaqCategories,
       variables() {
         return { locale: this.$i18n.locale }
       },
-      fetchPolicy: 'cache-and-network'
+      fetchPolicy: 'no-cache'
     }
   }
 })
