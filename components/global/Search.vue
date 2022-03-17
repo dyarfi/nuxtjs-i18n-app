@@ -1,17 +1,5 @@
 <template>
-  <CBox :width="['100%', '75%']" :px="[2, 0]" :py="[2, 8]" mx="auto">
-    <!-- <c-stack :spacing="3">
-      <c-input-group>
-        <c-input-left-element
-          ><c-icon name="check-circle" color="gray.300"
-        /></c-input-left-element> -->
-    <!-- <c-input
-          type="text"
-          name="queryText"
-          placeholder="Search"
-          value=""
-          @focus="(e) => emitSearch(e)"
-        /> -->
+  <CBox :width="['100%']" :px="[2, 0]" :py="[2, 8]" mx="auto">
     <c-stack :spacing="3">
       <input
         v-chakra="{
@@ -23,7 +11,7 @@
         borderColor="gray.300"
         rounded="md"
         type="text"
-        name="query"
+        name="search"
         placeholder="Search"
         value=""
         @change="emitSearch"
@@ -32,8 +20,6 @@
     <!-- <c-button @click="emitSearch">Submit</c-button> -->
     <!-- <c-icon-button aria-label="Search database" icon="check" /> -->
     <!-- </c-input-group> -->
-    <!-- {{ queryText }} -->
-    <!-- </c-stack> -->
   </CBox>
 </template>
 
@@ -58,7 +44,7 @@ export default {
   methods: {
     emitSearch(e) {
       const vm = this
-      e.target.value !== '' && vm.$emit('query', e.target.value)
+      e.target.value !== '' && vm.$emit('search', e.target.value)
     }
   }
 }

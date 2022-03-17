@@ -1,8 +1,9 @@
 <template>
   <div>
     <Header />
-    <div v-chakra zIndex="0" position="relative" height="90vh">
+    <div v-chakra zIndex="0" position="relative" height="100%" pb="8rem">
       <CSimpleGrid
+        v-if="faqs && faqs.data && faqs.data.length"
         :width="['100%', '75%']"
         :px="[2, 0]"
         :py="[2, 0]"
@@ -27,18 +28,44 @@
           textAlign="center"
         >
           <CPseudoBox my="4">
-            <CBox :width="['100%', '75%']" :px="[2, 0]" :py="[2, 0]" mx="auto">
-              <CPseudoBox text-align="left" margin="0"
-                ><h1 v-if="faqs && faqs.data && faqs.data.length">
-                  {{ $t('search') }}: {{ search }}
-                </h1>
-                <h1 v-else>{{ $t('searchnotfound') }}</h1></CPseudoBox
-              >
-            </CBox>
-            <Search />
+            <CPseudoBox text-align="left" margin="0"
+              ><CHeading as="h1" font-weight="thin">
+                {{ $t('search') }}: {{ search }}
+              </CHeading>
+            </CPseudoBox>
+            <Search @search="(v) => searchEvent(v)" />
           </CPseudoBox>
         </CBox>
       </CSimpleGrid>
+      <CBox v-else :height="['65vh']" pt="3rem">
+        <CSimpleGrid
+          :width="['100%', '75%']"
+          :px="[2, 0]"
+          :py="[2, 0]"
+          :columns="[1]"
+          :spacing="10"
+          mx="auto"
+          mt="12"
+          color="white"
+          ><CBox
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            :width="['100%']"
+            mx="auto"
+            mt="6"
+            p="8"
+            boxShadow="lg"
+            backgroundColor="white"
+            position="relative"
+            zIndex="0"
+            textAlign="left"
+            ><CHeading as="h1" font-weight="thin">{{
+              $t('searchnotfound')
+            }}</CHeading>
+            <Search @search="(v) => searchEvent(v)" /></CBox
+        ></CSimpleGrid>
+      </CBox>
       <CSimpleGrid
         v-if="faqs && faqs.data && faqs.data.length"
         :width="['100%', '75%']"
@@ -161,10 +188,17 @@ export default {
   data() {
     return { search: '' }
   },
-  // beforeCreate() {
   created() {
-    const { query } = this.$route.query
-    this.search = query
+    const { search } = this.$route.query
+    this.search = search
+  },
+  methods: {
+    searchEvent(v) {
+      // console.log(v)
+      this.$router
+        .push(this.localePath({ path: 'search', query: { search: v } }))
+        .go()
+    }
   },
   // Apollo queries server side
   apollo: {

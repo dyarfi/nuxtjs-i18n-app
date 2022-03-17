@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div v-chakra zIndex="0" position="relative">
+    <div v-chakra zIndex="0" position="relative" pb="8rem">
       <!-- <CBox :w="['md', 'xl']" :px="[2, 0]" mx="auto" :py="[2, 0]"> -->
       <CBox :width="['100%', '75%']" :px="[2, 0]" :py="[2, 0]" mx="auto">
         <Tutorial />
@@ -11,7 +11,9 @@
         <Pages :items="pages" />
       </CBox> -->
 
-      <Search @query="(v) => searchEvent(v)" />
+      <CBox :width="['100%', '75%']" :px="[2, 0]" :py="[2, 0]" mx="auto">
+        <Search @search="(v) => searchEvent(v)" />
+      </CBox>
 
       <CSimpleGrid
         v-if="faqCategories && faqCategories.data.length"
@@ -301,7 +303,7 @@ export default Vue.extend({
     searchEvent(v) {
       this.$router.push(
         this.localePath(
-        { path: 'search', query: { query: v } })
+        { path: 'search', query: { search: v } })
       )
     }
   },
