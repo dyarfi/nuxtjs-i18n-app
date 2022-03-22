@@ -10,7 +10,9 @@ export default {
   head() {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
-      title: 'nuxtjs-i18n-app',
+      titleTemplate: 'Faqly | %s',
+      title: 'Help center service CMS',
+      description: 'A Website with Custom Management System for Help Center',
       htmlAttrs: {
         // lang: defaultLocale
         ...i18nHead.htmlAttrs

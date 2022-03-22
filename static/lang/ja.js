@@ -1,6 +1,7 @@
 export default {
   welcome: 'ストラップNuxtJSヘルプセンターへようこそ',
   search: '検索',
+  searchResult: '検索結果：{name}',
   searchnotfound: '検索が見つかりません',
   recommend:
     '<a href="https://nuxtjs.org" target="_blank"> Nuxtドキュメント</a>をご覧になることをお勧めします、フレームワークを初めて使用する場合でも、以前にフレームワークを使用したことがある場合でも。<br/>',

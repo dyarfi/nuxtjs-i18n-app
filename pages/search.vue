@@ -188,6 +188,9 @@ export default {
   data() {
     return { search: '' }
   },
+  head({ $i18n, search }) {
+    return { title: `${$i18n.t('searchResult', { name: search })}` }
+  },
   created() {
     const { search } = this.$route.query
     this.search = search
